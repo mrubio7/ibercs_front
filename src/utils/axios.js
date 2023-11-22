@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { auth } from './firebase';
 
 export const basic_get = (url, params) => {
     return axios.get(url, params)
@@ -19,7 +20,7 @@ export const basic_post = (url, params) => {
 export const get_with_auth = (url, params) => {
     return axios.create({
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+            'Authorization': `Bearer ${auth.currentUser.accessToken}`
         }
     }).get(url, params)
     .catch(error => {
@@ -31,7 +32,7 @@ export const get_with_auth = (url, params) => {
 export const post_with_auth = (url, params) => {
     return axios.create({
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+            'Authorization': `Bearer ${auth.currentUser.accessToken}`
         }
     }).post(url, params)
     .catch(error => {
@@ -43,7 +44,7 @@ export const post_with_auth = (url, params) => {
 export const put_with_auth = (url, params) => {
     return axios.create({
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+            'Authorization': `Bearer ${auth.currentUser.accessToken}`
         }
     }).put(url, params)
     .catch(error => {

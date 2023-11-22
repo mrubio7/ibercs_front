@@ -4,7 +4,7 @@ import { texts } from "../../utils/translate";
 import Context from "../../context";
 import Match from "../../components/match";
 import MatchList from "../../components/match-list";
-import ThreadList from "../../components/thread-list";
+import ThreadList_Latest from "../../components/thread-list/threadList_Latest";
 
 const styles = {
     divider: {
@@ -37,7 +37,7 @@ const Index = () => {
             <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
                 <section style={styles.forum}>
                     <h3>{texts[obj.Lang].FORUM_Title}</h3>
-                    <ThreadList />
+                    <ThreadList_Latest />
                 </section>
                 <section style={styles.addons}>
                     <h3>{texts[obj.Lang].ADDONS_Title}</h3>

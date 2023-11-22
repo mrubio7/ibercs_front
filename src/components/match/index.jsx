@@ -77,7 +77,7 @@ const Match = ({teamImageA, teamImageB, teamNameA, teamNameB, map}) => {
                             key={index}
                             style={{width: `${100/map.length}%`}}
                             sx={{ height: '80px' }}
-                            image={`/images/maps/${item}.avif`}
+                            image={`/images/maps/${item}.webp`}
                         />
                     );
                 })

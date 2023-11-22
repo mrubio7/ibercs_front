@@ -1,8 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "../components/layout";
-import { ContextProvider } from "../context";
+import Context, { ContextProvider }  from "../context";
 import Index from "./index";
-import Match from "../components/match";
+import Ladder from "./ladder";
+import Forum from "./forum";
+import Login from "./login";
+import Register from "./register";
+import { auth } from "../utils/firebase";
+import { useContext, useEffect } from "react";
+import Profile from "./profile";
+
 
 const styles = {
   app: {
@@ -15,6 +22,10 @@ const styles = {
 }
 
 function App() {
+ 
+  useEffect(() => {
+    
+  }, []);
 
   return (
     <div style={styles.app}>
@@ -23,6 +34,11 @@ function App() {
             <Layout>
               <Routes>
                   <Route path="/*" element={ <Index/> } />
+                  <Route path="/profile" element={ <Profile/> } />
+                  <Route path="/login" element={ <Login/> } />
+                  <Route path="/register" element={ <Register /> } />
+                  <Route path="/forum/*" element={ <Forum/> } />
+                  <Route path="/ladder/*" element={ <Ladder/> } />
               </Routes>
             </Layout>
           </Router>

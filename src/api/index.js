@@ -1,10 +1,10 @@
-import { basic_get, basic_post } from '../utils/axios'
+import { basic_get, basic_post, get_with_auth } from '../utils/axios'
 import { api_endpoints } from '../utils/const';
 
 const Api = {
     Account: {
-        new: (email, username, password) => {
-            return basic_post(api_endpoints.account.new, { "email":email, "username":username, "password":password });
+        new: (email, username, password, invitation, image) => {
+            return basic_post(api_endpoints.account.new, { "email":email, "username":username, "password":password, "invitation":invitation, "image":image.toString() });
         },
         isFreeUsername: (username) => {
             return basic_post(api_endpoints.account.isFreeUsername, {"username":username });
@@ -24,6 +24,22 @@ const Api = {
     Post: {
         new: (lang, desc_es, desc_pt, user, thread_id) => {
             return basic_post(api_endpoints.post.new, { "lang":lang, "desc_es":desc_es, "desc_pt":desc_pt, "user":user.ToString(), "thread_id":thread_id.ToString() });
+        },
+    },
+    User: {
+        getImageByEmail: (email) => {
+            return get_with_auth(api_endpoints.user.getImageByEmail+"?email="+email);
+        },
+        getUserByEmail: (username) => {
+            return get_with_auth(api_endpoints.user.getUserByEmail+"?email="+username);
+        },
+    },
+    Faceit: {
+        login: () => {
+            return get_with_auth(api_endpoints.faceit.login);
+        },
+        callback: () => {
+            return get_with_auth(api_endpoints.faceit.callback);
         },
     }
 }

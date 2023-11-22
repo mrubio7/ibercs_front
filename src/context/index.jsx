@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { lightTheme } from "../utils/const";
 
 const Context = createContext({
     Lang: "",
@@ -11,7 +12,9 @@ export const ContextProvider = ({children}) => {
         setLang: () => {},
     });
 
-
+    useEffect(() => {
+        
+    }, [obj]);
 
     const setLang = (lang) => {
         setObj((prevObj) => ({ ...prevObj, Lang: lang }));

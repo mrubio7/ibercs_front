@@ -7,7 +7,7 @@ import { texts } from '../../utils/translate';
 const styles = {
     thread: {
         width: '100%',
-        height: '60px',
+        height: '75px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -24,10 +24,23 @@ const styles = {
         height: '100%',
     },
     threadTitle: {
-        marginLeft: '15px',
+        margin: '2px 0px 0px 15px',
         width: '100%',
         display: 'flex',
         alignItems: 'center',
+    },
+    threadDesc: {
+        marginLeft: '15px',
+        marginBottom: '5px',
+        color: '#555', 
+        width: '95%',
+        display: 'flex',
+        alignItems: 'center',
+        fontSize: '0.8rem',
+        overflow: 'hidden',
+        display: '-webkit-box',
+        WebkitLineClamp: '2',
+        WebkitBoxOrient: 'vertical',
     },
     threadInfo: {
         display: 'flex',
@@ -37,7 +50,7 @@ const styles = {
     },
 }
 
-const Thread = ({title_ES, title_PT, username, posts_nb, id, match}) => {
+const Thread = ({title_ES, title_PT, desc_ES, desc_PT, username, posts_nb, id, match}) => {
     const obj = useContext(Context);
     
     return (
@@ -54,14 +67,20 @@ const Thread = ({title_ES, title_PT, username, posts_nb, id, match}) => {
                         /> : 
                         null
                     }
-                    
-                    <div style={styles.threadTitle}>
-                        {
-                            obj.Lang === 'ES' ? <b>{title_ES}</b> : <b>{title_PT}</b>
-                        }
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
+                        <div style={styles.threadTitle}>
+                            {
+                                obj.Lang === 'ES' ? <b>{title_ES}</b> : <b>{title_PT}</b>
+                            }
+                        </div>
+                        <div style={styles.threadDesc}>
+                            {
+                                obj.Lang === 'ES' ? <span>{desc_ES}</span> : <span>{desc_PT}</span>
+                            }
+                        </div>
                     </div>
                     <div style={styles.threadInfo}>
-                        <Chip color="primary" sx={{margin: '0px 5px'}} label={posts_nb} size='small' />
+                        <Chip color="primary" sx={{margin: '0px 5px'}} label={posts_nb - 1} size='small' />
                         <Chip color="secondary" sx={{margin: '0px 5px'}} label={username} size='small' />
                     </div>
                 </div>

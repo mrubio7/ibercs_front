@@ -10,7 +10,7 @@ const SwitchLang = ({lang, setLang}) => {
     };
 
     return (
-        <section style={{scale: '0.7'}}>
+        <section style={{}}>
             <Select
                 sx={{}}
                 labelId="lang"
