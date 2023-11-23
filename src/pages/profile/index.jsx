@@ -12,6 +12,7 @@ const Profile = () => {
     const [image, setImage] = useState(null);
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
+	const [player, setPlayer] = useState(null);
 
     useEffect(() => {
         const getImage = async () => {
@@ -24,6 +25,7 @@ const Profile = () => {
             const data = await Api.User.getUserByEmail(auth.currentUser?.email);
             setUsername(data.data.success.username);
             setEmail(data.data.success.email);
+			setPlayer(data.data.success.Player);
         }
 
         getUser();
@@ -45,7 +47,7 @@ const Profile = () => {
                 </Box>
             </Box>
             <Box>
-                <Faceit />
+                <Faceit player={player} />
             </Box>
         </div>
     )
