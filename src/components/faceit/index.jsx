@@ -1,21 +1,21 @@
 import { Button } from "@mui/material";
 import Api from "../../api";
+import { useEffect } from "react";
 
-
-const Faceit = () => {
+const Faceit = ({player}) => {
     
-    const handleFaceitLogin = async () => {
-        await Api.Faceit.login();
-    }
+    useEffect(() => {
+
+    }, [player]);
 
     return (
         <div>
             Faceit
-            <Button variant="contained">
-                <a href="https://ibercs.onrender.com/api/v1/faceit/login">
-                    Go
+                <a href="https://ibercs.onrender.com/api/v1/faceit/login?guid=8e06f536-cc86-4922-b475-f31021954198">
+                    <Button variant="contained">
+                        Go
+                    </Button>
                 </a>
-            </Button>
         </div>
     )
 }

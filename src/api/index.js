@@ -33,14 +33,6 @@ const Api = {
         getUserByEmail: (username) => {
             return get_with_auth(api_endpoints.user.getUserByEmail+"?email="+username);
         },
-    },
-    Faceit: {
-        login: () => {
-            return get_with_auth(api_endpoints.faceit.login);
-        },
-        callback: () => {
-            return get_with_auth(api_endpoints.faceit.callback);
-        },
     }
 }
 
