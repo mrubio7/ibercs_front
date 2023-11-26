@@ -20,7 +20,7 @@ const Faceit = ({player}) => {
 
     return (
         <Box sx={{display:'flex'}}>
-			<a href="https://ibercs.onrender.com/api/v1/faceit/login?guid=8e06f536-cc86-4922-b475-f31021954198">
+			<a href="https://ibercs.onrender.com/api/v1/faceit/login">
 				<Button sx={{}} variant="contained">
 					{texts[obj.Lang].FACEIT_Connect}
                 </Button>
