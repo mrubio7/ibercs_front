@@ -3,7 +3,7 @@ import Context from "../../context";
 import { useContext, useEffect } from "react";
 import { texts } from "../../utils/translate";
 
-const Faceit = ({player}) => {
+const Faceit = ({player, guid}) => {
     const obj = useContext(Context);
 
 	if (player?.guid != "") { 
@@ -20,7 +20,7 @@ const Faceit = ({player}) => {
 
     return (
         <Box sx={{display:'flex'}}>
-			<a href="https://ibercs.onrender.com/api/v1/faceit/login">
+			<a href={`https://ibercs.onrender.com/api/v1/faceit/login?guid=${guid}`}>
 				<Button sx={{}} variant="contained">
 					{texts[obj.Lang].FACEIT_Connect}
                 </Button>

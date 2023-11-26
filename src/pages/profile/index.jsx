@@ -47,7 +47,7 @@ const Profile = () => {
                 </Box>
             </Box>
             <Box>
-                <Faceit player={player} />
+                <Faceit player={player} guid={player.guid} />
             </Box>
         </div>
     )
