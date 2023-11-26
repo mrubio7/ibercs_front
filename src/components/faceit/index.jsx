@@ -6,11 +6,7 @@ import { texts } from "../../utils/translate";
 const Faceit = ({player}) => {
     const obj = useContext(Context);
 
-    useEffect(() => {
-
-    }, [player]);
-
-	if (player?.Nickname != null) { 
+	if (player?.guid != null) { 
 		return (
 			<>
 				<Box sx={{display:'flex'}}>
