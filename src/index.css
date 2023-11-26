@@ -10,9 +10,18 @@ a {
     color: #fff;
 }
 
-.row-me {
-    color: rgb(255, 76, 5) !important;
-    font-weight: 700;
-}
-
-
+.faceit-elo {
+    color: #fff; /* Texto en color blanco para mayor visibilidad */
+    padding: 10px; /* Ajusta el espaciado según sea necesario */
+    border-radius: 5px; /* Esquinas redondeadas para un aspecto más agradable */
+    display: inline-block; /* Para que las clases no ocupen toda la línea */
+  }
+  
+  /* Aplicar un fondo con degradado de colores basado en la puntuación */
+  .faceit-elo[data-elo="0"] {
+    background: linear-gradient(to right, #FF1493, #FFD700); /* Rosa a dorado */
+  }
+  
+  .faceit-elo[data-elo="3600"] {
+    background: linear-gradient(to right, #FF0000, #FF1493); /* Rojo a rosa */
+  }
