@@ -13,6 +13,7 @@ const Profile = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
 	const [player, setPlayer] = useState(null);
+    const [guid, setGuid] = useState("");
 
     useEffect(() => {
         const getImage = async () => {
@@ -26,6 +27,7 @@ const Profile = () => {
             setUsername(data.data.success.username);
             setEmail(data.data.success.email);
 			setPlayer(data.data.success.Player);
+            setGuid(data.data.success.guid);
         }
 
         getUser();
@@ -33,7 +35,6 @@ const Profile = () => {
     }, []);
 
     useEffect(() => {
-        
     }, [image, username, email]);
 
     return (
@@ -47,7 +48,7 @@ const Profile = () => {
                 </Box>
             </Box>
             <Box>
-                <Faceit player={player} guid={player.guid} />
+                <Faceit player={player} guid={guid} />
             </Box>
         </div>
     )
