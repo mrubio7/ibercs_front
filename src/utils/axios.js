@@ -18,37 +18,82 @@ export const basic_post = (url, params) => {
 };
 
 export const get_with_auth = (url, params) => {
-    return axios.create({
-        headers: {
-            'Authorization': `Bearer ${auth.currentUser.accessToken}`
-        }
-    }).get(url, params)
-    .catch(error => {
-        console.error('Error in get_with_auth:', error);
-        throw error;
+    return new Promise((resolve, reject) => {
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                axios.create({
+                    headers: {
+                        'Authorization': `Bearer ${user.accessToken}`
+                    }
+                }).get(url, params)
+                .then(response => resolve(response))
+                .catch(error => {
+                    console.error('Error in get_with_auth:', error);
+                    reject(error);
+                });
+            } else {
+                reject('No user logged in');
+            }
+        });
     });
 }
 
 export const post_with_auth = (url, params) => {
-    return axios.create({
-        headers: {
-            'Authorization': `Bearer ${auth.currentUser.accessToken}`
-        }
-    }).post(url, params)
-    .catch(error => {
-        console.error('Error in post_with_auth:', error);
-        throw error;
+    return new Promise((resolve, reject) => {
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                if (user.stsTokenManager && user.stsTokenManager.isExpired) {
+                    user.getIdToken(true).then((token) => {
+                        axios.create({
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            }
+                        }).post(url, params)
+                        .then(response => resolve(response))
+                        .catch(error => {
+                            console.error('Error in post_with_auth:', error);
+                            reject(error);
+                        });
+                    }).catch((error) => {
+                        console.error('Error getting new token:', error);
+                        reject(error);
+                    });
+                } else {
+                    axios.create({
+                        headers: {
+                            'Authorization': `Bearer ${user.accessToken}`
+                        }
+                    }).post(url, params)
+                    .then(response => resolve(response))
+                    .catch(error => {
+                        console.error('Error in post_with_auth:', error);
+                        reject(error);
+                    });
+                }
+            } else {
+                reject('No user logged in');
+            }
+        });
     });
 }
 
 export const put_with_auth = (url, params) => {
-    return axios.create({
-        headers: {
-            'Authorization': `Bearer ${auth.currentUser.accessToken}`
-        }
-    }).put(url, params)
-    .catch(error => {
-        console.error('Error in put_with_auth:', error);
-        throw error;
+    return new Promise((resolve, reject) => {
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                axios.create({
+                    headers: {
+                        'Authorization': `Bearer ${user.accessToken}`
+                    }
+                }).put(url, params)
+                .then(response => resolve(response))
+                .catch(error => {
+                    console.error('Error in put_with_auth:', error);
+                    reject(error);
+                });
+            } else {
+                reject('No user logged in');
+            }
+        });
     });
 }

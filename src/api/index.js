@@ -1,4 +1,4 @@
-import { basic_get, basic_post, get_with_auth } from '../utils/axios'
+import { basic_get, basic_post, get_with_auth, post_with_auth } from '../utils/axios'
 import { api_endpoints } from '../utils/const';
 
 const Api = {
@@ -14,16 +14,19 @@ const Api = {
         },
     },
     Thread: {
-        new: (lang, title_es, title_pt, user) => {
-            return basic_post(api_endpoints.thread.new, { "lang":lang, "title_es":title_es, "title_pt":title_pt, "user":user.ToString() });
+        new: (lang, title, user,desc) => {
+            return post_with_auth(api_endpoints.thread.new, { "lang":lang, "title":title, "user":String(user), "desc": desc });
         },
         getLatest: () => {
             return basic_get(api_endpoints.thread.getLatest);
-        }
+        },
+        get: (id) => {
+            return get_with_auth(api_endpoints.thread.get+"?thread_id="+id);
+        },
     },
     Post: {
-        new: (lang, desc_es, desc_pt, user, thread_id) => {
-            return basic_post(api_endpoints.post.new, { "lang":lang, "desc_es":desc_es, "desc_pt":desc_pt, "user":user.ToString(), "thread_id":thread_id.ToString() });
+        new: (lang, desc, user, thread_id) => {
+            return post_with_auth(api_endpoints.post.new, { "lang":lang, "desc":desc, "user":String(user), "thread_id":String(thread_id) });
         },
     },
     User: {
@@ -33,6 +36,11 @@ const Api = {
         getUserByEmail: (username) => {
             return get_with_auth(api_endpoints.user.getUserByEmail+"?email="+username);
         },
+    },
+    Players: {
+        getPlayersOrderedByElo: () => {
+            return get_with_auth(api_endpoints.players.getPlayersOrderedByElo);
+        }
     }
 }
 

@@ -29,8 +29,8 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" elevation={0} variant='outlined' sx={{bgcolor: 'background.paper'}}>
+      <Box sx={{ flexGrow: 1, bgcolor: 'background.paper' }}>
+        <AppBar position="static" elevation={0} variant='outlined' >
           <Toolbar variant='dense'>
             <Avatar alt="logo" src="/images/ibercs.png" variant='square' sx={{ width: 56, height: 56 }} />
             <Box sx={{marginLeft: 5}}>
@@ -56,11 +56,11 @@ const Layout = ({ children }) => {
             }
           </Toolbar>
         </AppBar>
-      </Box>
-      <Box sx={{ bgcolor: 'background.paper', width: '100%', height:'100%', color: 'white'}}>
-        <Container sx={{marginTop: 2}}>
-          {children}
-        </Container>
+        <Box sx={{ bgcolor: 'background.paper', width: '100%', height:'100%', color: 'white'}}>
+          <Container sx={{marginTop: 2, height: '100%'}}>
+            {children}
+          </Container>
+        </Box>
       </Box>
     </>
   );

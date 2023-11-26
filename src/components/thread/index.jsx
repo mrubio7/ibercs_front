@@ -7,7 +7,7 @@ import { texts } from '../../utils/translate';
 const styles = {
     thread: {
         width: '100%',
-        height: '75px',
+        height: '60px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -24,10 +24,12 @@ const styles = {
         height: '100%',
     },
     threadTitle: {
-        margin: '2px 0px 0px 15px',
+        margin: '5px 0px 0px 15px',
         width: '100%',
         display: 'flex',
         alignItems: 'center',
+        WebkitLineClamp: '1',
+        WebkitBoxOrient: 'vertical',
     },
     threadDesc: {
         marginLeft: '15px',
@@ -39,7 +41,7 @@ const styles = {
         fontSize: '0.8rem',
         overflow: 'hidden',
         display: '-webkit-box',
-        WebkitLineClamp: '2',
+        WebkitLineClamp: '1',
         WebkitBoxOrient: 'vertical',
     },
     threadInfo: {
@@ -56,7 +58,7 @@ const Thread = ({title_ES, title_PT, desc_ES, desc_PT, username, posts_nb, id, m
     return (
         <>
             <Link to={`/forum/${id}`}>
-            <Card style={styles.thread} variant="outlined" sx={{':hover': { backgroundColor: '#A4351D', transition: '0.1s ease' }, transition: '0.1s ease'}}>
+            <Card style={styles.thread} variant="outlined" sx={{':hover': { backgroundColor: 'rgba(255,255,255,0.02)', transition: '0.1s ease' }, transition: '0.1s ease'}}>
                 <div style={styles.threadContent}>
                     {
                         match ? 

@@ -11,6 +11,7 @@ export const api_endpoints = {
     thread: {
         new: `${url_base}/thread/new`,
         getLatest: `${url_base}/thread/get-latest`,
+        get: `${url_base}/thread/get`,
     },
     post: {
         new: `${url_base}/post/new`,
@@ -23,6 +24,9 @@ export const api_endpoints = {
     faceit: {
         login: `${url_base}/faceit/login`,
         callback: `${url_base}/faceit/callback`,
+    },
+    players: {
+        getPlayersOrderedByElo: `${url_base}/player/get-all-by-elo`,
     }
 }
 
@@ -30,7 +34,7 @@ export const darkTheme = createTheme({
     palette: {
       mode: 'dark',
       primary: {
-        main: '#d32f2f'
+        main: '#e58716'
       },
       secondary: {
         main: '#5B5B5B',
@@ -45,7 +49,7 @@ export const lightTheme = createTheme({
         main: '#d32f2f'
       },
       secondary: {
-        main: '#5B5B5B',
+        main: '#e58716',
       },
       white: {
         main: '#ffffff',

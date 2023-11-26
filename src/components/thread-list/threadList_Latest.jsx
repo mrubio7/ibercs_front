@@ -20,7 +20,7 @@ const ThreadList_Latest = () => {
         <div style={{marginTop: '-5px'}}>
             {
                 threadList.map((t, index) => {
-                    if (index <= 10) {
+                    if (index < 8) {
                         return (
                             <Thread key={index} desc_ES={t.Posts[0].Desc_ES} desc_PT={t.Posts[0].Desc_PT} title_ES={t.title_es} title_PT={t.title_pt} username={t.user} posts_nb={t.posts_number} id={t.ID} />
                         )

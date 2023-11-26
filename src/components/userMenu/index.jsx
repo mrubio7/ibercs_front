@@ -68,16 +68,16 @@ const UserMenu = () => {
             <MenuItem onClick={handleCloseUserMenu} disabled>
                 {auth.currentUser?.displayName}
             </MenuItem>
-            <MenuItem onClick={handleCloseUserMenu}>
-                <Link to='/profile'>
-                    <Typography color={'secondary'}>{texts[obj.Lang].NAVBAR_USERMENU_Profile}</Typography>
-                </Link>
-            </MenuItem>
-            <MenuItem onClick={handleCloseUserMenu}>
-                <Link onClick={handleLogout}>
+            <Link to='/profile'>
+                <MenuItem onClick={handleCloseUserMenu}>
+                        <Typography color={'secondary'}>{texts[obj.Lang].NAVBAR_USERMENU_Profile}</Typography>
+                </MenuItem>
+            </Link>
+            <Link onClick={handleLogout}>
+                <MenuItem onClick={handleCloseUserMenu}>
                     <Typography color={'primary'}>{texts[obj.Lang].EXIT}</Typography>
-                </Link>
-            </MenuItem>
+                </MenuItem>
+            </Link>
            
             </Menu>
         </Box>
