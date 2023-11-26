@@ -6,7 +6,7 @@ import { texts } from "../../utils/translate";
 const Faceit = ({player}) => {
     const obj = useContext(Context);
 
-	if (player?.guid != null) { 
+	if (player?.guid != "") { 
 		return (
 			<>
 				<Box sx={{display:'flex'}}>
