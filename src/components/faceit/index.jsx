@@ -6,6 +6,9 @@ import { texts } from "../../utils/translate";
 const Faceit = ({player, guid}) => {
     const obj = useContext(Context);
 
+	useEffect(() => {
+	}, [player])
+
 	if (player?.guid != "") { 
 		return (
 			<>

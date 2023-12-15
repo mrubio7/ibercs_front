@@ -33,7 +33,7 @@ const Profile = () => {
             const data = await Api.User.getUserByEmail(auth.currentUser?.email);
             setUsername(data.data.success.username);
             setEmail(data.data.success.email);
-			setPlayer(data.data.success.Player);
+			setPlayer(data.data.success.player);
             setGuid(data.data.success.guid);
             setInvitations(data.data.success.invitations);
         }
@@ -43,6 +43,7 @@ const Profile = () => {
     }, []);
 
     useEffect(() => {
+
     }, [image, username, email]);
 
     return (
