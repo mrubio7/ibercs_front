@@ -52,7 +52,7 @@ const ThreadList = () => {
                     <RenderThreads page={page} threads={threadList} />
             }
             <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
-                <Pagination count={10} page={page} onChange={handleChange} size='large' />
+                <Pagination count={Math.ceil(threadList.length / 10)} page={page} onChange={handleChange} size='large' />
             </Box>
         </div>
     )

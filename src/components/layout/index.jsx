@@ -29,18 +29,23 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1, bgcolor: 'background.paper' }}>
-        <AppBar position="static" elevation={0} variant='outlined' >
+      <Box sx={{ flexGrow: 1, bgcolor: 'background.paper'}}>
+        <AppBar position="static" elevation={0} variant='outlined' sx={{background: 'linear-gradient(0deg, rgba(255,136,0,0.0) 0%, rgba(0,0,0,0) 100%)', marginBottom: 4 }} >
           <Toolbar variant='dense'>
-            <Avatar alt="logo" src="/images/ibercs.png" variant='square' sx={{ width: 56, height: 56 }} />
+            <Link to="/">
+              <Avatar alt="logo" src="/images/ibercs.png" variant='square' sx={{ width: 56, height: 56 }} />
+            </Link>
             <Box sx={{marginLeft: 5}}>
               <Link to="/" style={styles.link}>
                 <Button variant="text" color='primary'>{texts[obj.Lang].NAVBAR_Inicio}</Button>
               </Link>
-              <Link to="/forum" style={styles.link}>
-                <Button variant="text" color='primary'>{texts[obj.Lang].NAVBAR_Forum}</Button>
+              <Link to="/matches" style={styles.link}>
+                <Button variant="text" color='primary'>{texts[obj.Lang].NAVBAR_Matches}</Button>
               </Link>
-              <Link to="/ladder" style={styles.link}>
+              {/* <Link to="/forum" style={styles.link}>
+                <Button variant="text" color='primary'>{texts[obj.Lang].NAVBAR_Forum}</Button>
+              </Link> */}
+              <Link to="/ladder/teams" style={styles.link}>
                 <Button variant="text" color='primary'>{texts[obj.Lang].NAVBAR_Ladder}</Button>
               </Link>
             </Box>
@@ -56,10 +61,13 @@ const Layout = ({ children }) => {
             }
           </Toolbar>
         </AppBar>
-        <Box sx={{ bgcolor: 'background.paper', width: '100%', height:'100%', color: 'white'}}>
-          <Container sx={{marginTop: 2, height: '100%'}}>
-            {children}
-          </Container>
+          <Box sx={{ bgcolor: 'background.paper', width: '100%', height:'100%', color: 'white'}}>
+            <Container sx={{marginTop: 2, height: '100%'}}>
+              {children}
+              <Box sx={{position: 'absolute', right: 0, bottom: 0, marginRight: '20px', marginBottom: '20px', fontSize: '0.6em'}}>
+                v1.0.0
+              </Box>
+            </Container>
         </Box>
       </Box>
     </>

@@ -1,11 +1,8 @@
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Api from '../../api';
-import { Avatar, Tooltip, IconButton } from '@mui/material';
-import HelpIcon from '@mui/icons-material/Help';
-import Context from '../../context';
-import { texts } from '../../utils/translate';
+import { Avatar } from '@mui/material';
 
 function getColorForScore(score) {
   const minScore = 0;
@@ -28,18 +25,11 @@ function interpolateColor(color1, color2, factor) {
 };
 
 const columns = [
-  { field: 'id', headerName: 'N', width: 40 },
-  {
-    field: 'username',
-    headerName: 'Username',
-    width: 140,
-    align: 'center',
-    headerAlign: 'center',
-  },
+  { field: 'id', headerName: 'N', width: 30 },
   {
     field: 'avatar',
     headerName: '',
-    width: 70,
+    width: 20,
     align: 'center',
     headerAlign: 'right',
     sortable: false,
@@ -50,23 +40,20 @@ const columns = [
     ),
   },
   {
-    field: 'faceitNickname',
-    headerName: 'Faceit nickname',
-    width: 180,
+    field: 'name',
+    headerName: 'Name',
+    width: 400,
     align: 'left',
     headerAlign: 'left',
   },
   {
-    field: 'faceit_elo',
-    headerName: 'Elo',
-    type: 'number',
-    width: 100,
-    sortable: true,
-    filterable: true,
+    field: 'faceit_average_elo',
+    headerName: 'Average elo',
+    width: 200,
     align: 'left',
     headerAlign: 'left',
     renderCell: (params) => {
-      const color = getColorForScore(params.row.faceit_elo);
+      const color = getColorForScore(params.row.faceit_average_elo);
       return (
           <Box
               sx={{
@@ -76,64 +63,42 @@ const columns = [
                   fontWeight: 'bold',
               }}
           >
-              {params.row.faceit_elo}
+              {params.row.faceit_average_elo}
           </Box>
       );
     },
-  },
-  // {
-  //   field: 'faceit_avg_kills',
-  //   headerName: 'Avg. Kills',
-  //   width: 100,
-  //   align: 'left',
-  //   headerAlign: 'left',
-  // },
-  // {
-  //   field: 'faceit_avg_rating',
-  //   headerName: 'Avg. Rating',
-  //   width: 100,
-  //   align: 'left',
-  //   headerAlign: 'left',
-  // },
+  }, 
 ];
 
-const LadderPlayers = () => {
-  const [players, setPlayers] = useState([]);
+const LadderTeams = () => {
+  const [teams, setTeams] = useState([]);
   const [rows, setRows] = useState([]);
-  const obj = useContext(Context)
 
   useEffect(() => {
-    const getPlayers = async () => {
-      const players = await Api.Players.getPlayersOrderedByElo();
-      setPlayers(players.data.result);
+    const getTeams = async () => {
+      const teams = await Api.Teams.getAll();
+      setTeams(teams.data.result);
     }
 
-    getPlayers();
+    getTeams();
   }, []);
 
   useEffect(() => {
     const rows = 
-      players.map((player, index) => {
+      teams.map((team, index) => {
         return {
           "id": index + 1,
-          "username": player.Nickname,
-          "faceitNickname": player.faceit_nickname,
-          "faceit_elo": player.faceit_elo,
-          "faceit_avatar": player.faceit_avatar,
-          "faceit_avg_kills": player.faceit_avg_kills,
-          "faceit_avg_rating": player.faceit_avg_rating,
+          "name": team.faceit_name,
+          "faceit_avatar": team.faceit_avatar,
+          "faceit_average_elo": team.faceit_average_elo,
+          "faceit_url": team.faceit_url,
         }
       });
     setRows(rows);
-  }, [players]);
+  }, [teams]);
 
   return (
       <Box sx={{ height: 750, width: '100%' }}>
-          <Tooltip placement="right-start" title={texts[obj.Lang].LADDER_HelpPlayer}>
-            <IconButton>
-              <HelpIcon />
-            </IconButton>
-          </Tooltip>
           <DataGrid
               rows={rows}
               columns={columns}
@@ -144,7 +109,7 @@ const LadderPlayers = () => {
                     },
                 },
               }}
-              loading={players.length === 0}
+              loading={teams.length === 0}
               pageSizeOptions={[10]}
               disableRowSelectionOnClick
           />
@@ -152,4 +117,4 @@ const LadderPlayers = () => {
   );
 }
 
-export default LadderPlayers;
+export default LadderTeams;

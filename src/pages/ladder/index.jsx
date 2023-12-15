@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import LadderPlayers from "../../components/ladder/ladderPlayers";
 import { texts } from "../../utils/translate";
 import Context from "../../context";
+import LadderTeams from "../../components/ladder/ladderTeams";
 
 const Ladder = () => {
     const obj = useContext(Context);
+    document.title = texts[obj.Lang].TITLE_LADDER;
 
     return (
         <>
@@ -18,7 +20,7 @@ const Ladder = () => {
             <Routes>
                 <Route path="/" element={<h1>Ladder</h1>} />
                 <Route path="/players" element={<LadderPlayers />} />
-                
+                <Route path="/teams" element={<LadderTeams />} />
             </Routes>
         </>
     );

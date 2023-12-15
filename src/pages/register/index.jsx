@@ -34,6 +34,7 @@ const Register = () => {
     const [image, setImage] = useState("");
     const [invitation, setInvitation] = useState("");
     const navigate = useNavigate();
+    document.title = texts[obj.Lang].REGISTER;
 
     const handleRegister = async () => {
         const register = await Api.Account.new(email, displayName, password, invitation, image);

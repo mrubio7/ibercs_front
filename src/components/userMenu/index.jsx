@@ -46,7 +46,7 @@ const UserMenu = () => {
         <Box sx={{ flexGrow: 0, marginRight: 2 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar variant='circular' src={`data:image/jpeg;base64,${image}`} sx={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px', border: '1px solid #EEE'}} />
+                <Avatar variant='circular' src={`data:image/jpeg;base64,${image}`} sx={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px', border: '2px solid rgba(127,127,127,0.5)'}} />
               </IconButton>
             </Tooltip>
             <Menu

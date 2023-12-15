@@ -10,6 +10,8 @@ import { auth } from "../utils/firebase";
 import { useContext, useEffect } from "react";
 import Profile from "./profile";
 import Api from "../api";
+import { texts } from "../utils/translate";
+import Matches from "./matches";
 
 
 const styles = {
@@ -26,6 +28,7 @@ const styles = {
 function App() {
   const obj = useContext(Context);
   let intervalId = null;
+  document.title = texts[obj.Lang].TITLE_INDEX;
 
   const getUser = async () => {
     if (!obj.User?.ID && auth.currentUser && auth.currentUser.email) {
@@ -48,16 +51,18 @@ function App() {
     }
   }, [auth.currentUser?.email, obj.User]);
 
+
   return (
     <div style={styles.app}>
         <Router>
           <Layout>
             <Routes>
                 <Route path="/*" element={ <Index/> } />
-                <Route path="/profile" element={ <Profile/> } />
-                <Route path="/login" element={ <Login/> } />
                 <Route path="/register" element={ <Register /> } />
+                <Route path="/login" element={ <Login/> } />
+                <Route path="/profile" element={ <Profile/> } />
                 <Route path="/forum/*" element={ <Forum/> } />
+                <Route path="/matches" element={ <Matches/> } />
                 <Route path="/ladder/*" element={ <Ladder/> } />
             </Routes>
           </Layout>

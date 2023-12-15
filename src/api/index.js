@@ -41,6 +41,22 @@ const Api = {
         getPlayersOrderedByElo: () => {
             return get_with_auth(api_endpoints.players.getPlayersOrderedByElo);
         }
+    },
+    Matches: {
+        getAllMatches: () => {
+            return get_with_auth(api_endpoints.matches.getAllMatches);
+        },
+        getMatchByThreadId: (threadId) => {
+            return get_with_auth(api_endpoints.matches.getByThreadId+"?thread_id="+threadId);
+        },
+    },
+    Teams: {
+        new: (teamUrl, name) => {
+            return post_with_auth(api_endpoints.teams.new, { "faceit_team_url":teamUrl, "name":name });
+        },
+        getAll: () => {
+            return get_with_auth(api_endpoints.teams.getAll);
+        }
     }
 }
 

@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 
-//const url_base = 'http://localhost:8080/api/v1';
-const url_base = 'https://ibercs.onrender.com/api/v1'; 
+const url_base = 'http://localhost:8080/api/v1';
+//const url_base = 'https://ibercs.onrender.com/api/v1'; 
 export const api_endpoints = { 
     account: {
         new: `${url_base}/account/new`,
@@ -27,6 +27,14 @@ export const api_endpoints = {
     },
     players: {
         getPlayersOrderedByElo: `${url_base}/player/get-all-by-elo`,
+    },
+    matches: {
+        getAllMatches: `${url_base}/match/get-all`,
+        getByThreadId: `${url_base}/match/get-by-thread-id`,
+    },
+    teams: {
+        new: `${url_base}/team/new`,
+        getAll: `${url_base}/team/get-all`,
     }
 }
 

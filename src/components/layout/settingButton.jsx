@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import SettingsIcon from '@mui/icons-material/Settings';
+import TranslateIcon from '@mui/icons-material/Translate';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SwitchLang from './switchLang';
 import Context from '../../context';
@@ -66,16 +67,15 @@ const SettingButton = () => {
     return (
         <div>
             <Button
-                id="demo-customized-button"
                 aria-controls={open ? 'demo-customized-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 variant="text"
                 disableElevation
                 onClick={handleClick}
-                sx={{marginRight: 3}}
+                sx={{marginRight: 3, color: 'grey.700'}}
             >
-                <SettingsIcon />
+                <TranslateIcon />
             </Button>
             <StyledMenu
                 id="demo-customized-menu"
