@@ -1,4 +1,4 @@
-import { Box, Container, AppBar, Typography, Button, Toolbar, Avatar, Menu, MenuItem } from '@mui/material';
+import { Box, Container, AppBar, Typography, Button, Toolbar, Avatar, Menu, MenuItem, IconButton } from '@mui/material';
 import React, { useEffect, useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { texts } from '../../utils/translate';
@@ -64,10 +64,17 @@ const Layout = ({ children }) => {
           <Box sx={{ bgcolor: 'background.paper', width: '100%', height:'100%', color: 'white'}}>
             <Container sx={{marginTop: 2, height: '100%'}}>
               {children}
-              <Box sx={{position: 'absolute', right: 0, bottom: 0, marginRight: '20px', marginBottom: '20px', fontSize: '0.6em'}}>
-                v1.0.0
-              </Box>
             </Container>
+        </Box>
+      </Box>
+      <Box>
+        <Box sx={{ bgcolor: 'background.paper', color:'gray'}}>
+          <a href='https://twitter.com/iber_cs'>
+            <IconButton sx={{marginLeft: 1}}><img src='/images/x-logo-white.png' width={20} /></IconButton>
+          </a>
+          <Box sx={{fontSize: '0.6em', textAlign:'right', marginRight: 1}}>
+            v1.1.0
+          </Box>
         </Box>
       </Box>
     </>

@@ -44,10 +44,10 @@ const Api = {
     },
     Matches: {
         getAllMatches: () => {
-            return get_with_auth(api_endpoints.matches.getAllMatches);
+            return basic_get(api_endpoints.matches.getAllMatches);
         },
         getMatchByThreadId: (threadId) => {
-            return get_with_auth(api_endpoints.matches.getByThreadId+"?thread_id="+threadId);
+            return basic_get(api_endpoints.matches.getByThreadId+"?thread_id="+threadId);
         },
     },
     Teams: {

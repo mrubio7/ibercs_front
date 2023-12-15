@@ -33,7 +33,8 @@ const Login = () => {
     const login = useFirebaseLogin();
     const logout = useFirebaseLogout();
     const navigate = useNavigate();
-    document.title = texts[obj.Lang].LOGIN;
+
+    document.title = texts[obj.Lang].TITLE_LOGIN;
 
     const handleLogin = async () => {
         const auth = await login(email, password);

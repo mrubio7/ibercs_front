@@ -65,12 +65,9 @@ const UserMenu = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
             >
-            <MenuItem onClick={handleCloseUserMenu} disabled>
-                {auth.currentUser?.displayName}
-            </MenuItem>
             <Link to='/profile'>
                 <MenuItem onClick={handleCloseUserMenu}>
-                        <Typography color={'secondary'}>{texts[obj.Lang].NAVBAR_USERMENU_Profile}</Typography>
+                        <Typography color={'grey'}>{texts[obj.Lang].NAVBAR_USERMENU_Profile}</Typography>
                 </MenuItem>
             </Link>
             <Link onClick={handleLogout}>

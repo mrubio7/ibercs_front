@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Context from '../../context';
 import { Card, Typography, Box, Chip, CardMedia, CardHeader } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 import { texts } from '../../utils/translate';
 
 const styles = {
@@ -54,7 +54,7 @@ const styles = {
 
 const Thread = ({title_ES, title_PT, desc_ES, desc_PT, username, posts_nb, id, match}) => {
     const obj = useContext(Context);
-    
+
     return (
         <>
             <Link to={`/forum/${id}`}>

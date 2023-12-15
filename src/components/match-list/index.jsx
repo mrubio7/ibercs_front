@@ -5,6 +5,7 @@ import Api from '../../api';
 import Context from '../../context';
 import { texts } from '../../utils/translate';
 import SearchIcon from '@mui/icons-material/Search';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const MatchList = ({isIndex}) => {
     const obj = useContext(Context)
@@ -13,6 +14,8 @@ const MatchList = ({isIndex}) => {
     const [ongoingMatches, setOngoingMatches] = useState([]);
     const [endedMatches, setEndedMatches] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [loading, setLoading] = useState(true);
+    
     
     const getUpcomingMatches = () => {
         const now = new Date();
@@ -27,15 +30,18 @@ const MatchList = ({isIndex}) => {
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
     }
+
     const filteredMatches = matches.filter(match =>
         match.team_name_a.toLowerCase().includes(searchTerm.toLowerCase()) ||
         match.team_name_b.toLowerCase().includes(searchTerm.toLowerCase()) ||
         match.tournament_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
     useEffect(() => {
         const getMatches = async () => {
             const matches = await Api.Matches.getAllMatches();
             setMatches(matches.data.result)
+            setLoading(false);
         }
     
         getMatches();
@@ -62,7 +68,13 @@ const MatchList = ({isIndex}) => {
         setOngoingMatches(ongoingM);
         setEndedMatches(endedM);
     }, [matches]);
-    
+
+
+    if (loading) return (
+        <Box sx={{display: 'flex', justifyContent:'center'}}>
+            <CircularProgress />
+        </Box>
+    );
 
     return (
         <>

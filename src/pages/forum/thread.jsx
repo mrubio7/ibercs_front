@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { redirect, useNavigate, useParams } from 'react-router-dom';
 import Api from '../../api';
 import Context from '../../context';
 import { Box, Button } from '@mui/material';

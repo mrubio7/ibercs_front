@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { auth } from './firebase';
+import { redirect } from 'react-router-dom';
 
 export const basic_get = (url, params) => {
     return axios.get(url, params)
@@ -32,7 +33,7 @@ export const get_with_auth = (url, params) => {
                     reject(error);
                 });
             } else {
-                reject('No user logged in');
+                redirect('/login');
             }
         });
     });
@@ -71,7 +72,7 @@ export const post_with_auth = (url, params) => {
                     });
                 }
             } else {
-                reject('No user logged in');
+                redirect('/login');
             }
         });
     });
