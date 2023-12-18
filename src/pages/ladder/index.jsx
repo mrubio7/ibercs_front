@@ -13,12 +13,6 @@ const Ladder = () => {
     const navigate = useNavigate();
     document.title = texts[obj.Lang].TITLE_LADDER;
 
-    useEffect(() => {
-        if (!auth.currentUser) {
-            navigate('/login');
-        }
-    }, [auth.currentUser]);
-
     return (
         <>
             <Box sx={{display: 'flex', marginBottom: 2}}>

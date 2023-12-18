@@ -39,7 +39,7 @@ const Api = {
     },
     Players: {
         getPlayersOrderedByElo: () => {
-            return get_with_auth(api_endpoints.players.getPlayersOrderedByElo);
+            return basic_get(api_endpoints.players.getPlayersOrderedByElo);
         }
     },
     Matches: {
@@ -55,7 +55,7 @@ const Api = {
             return post_with_auth(api_endpoints.teams.new, { "faceit_team_url":teamUrl, "name":name });
         },
         getAll: () => {
-            return get_with_auth(api_endpoints.teams.getAll);
+            return basic_get(api_endpoints.teams.getAll);
         }
     }
 }
