@@ -53,7 +53,7 @@ const Match = ({match}) => {
                         <span style={{color: new Date(match.date).setMinutes(new Date(match.date).getMinutes() + 45 * match.map_matches.length) < new Date() ? 'gray' : new Date(match.date) < new Date() ? 'red' : 'orange'}}>
                             {
                                 new Date(match.date).setMinutes(new Date(match.date).getMinutes() + 45 * match.map_matches.length) < new Date() 
-                                ? 'Ended' 
+                                ? 'Ended - ' + new Date(match.date).toLocaleString()
                                 : new Date(match.date) < new Date() 
                                     ? '🔴 NOW' 
                                     : "📅 "+new Date(match.date).toLocaleString()

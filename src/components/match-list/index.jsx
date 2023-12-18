@@ -14,6 +14,7 @@ const MatchList = ({isIndex}) => {
     const [ongoingMatches, setOngoingMatches] = useState([]);
     const [endedMatches, setEndedMatches] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [indexMatches, setIndexMatches] = useState([]);
     const [loading, setLoading] = useState(true);
     
     
@@ -67,6 +68,20 @@ const MatchList = ({isIndex}) => {
     
         setOngoingMatches(ongoingM);
         setEndedMatches(endedM);
+
+        if (isIndex) {
+            if (ongoingM.length > 0) {
+                setIndexMatches(ongoingM);
+            }
+
+            if (upcomingMatches.length > 0 && indexMatches.length < 5) {
+                setIndexMatches(prev => [...prev, ...upcomingMatches]);
+            }
+            
+            if (endedMatches.length > 0 && indexMatches.length < 5) {
+                setIndexMatches(prev => [...prev, ...endedMatches]);
+            }
+        }
     }, [matches]);
 
 
@@ -100,7 +115,7 @@ const MatchList = ({isIndex}) => {
                     ))
                     :
                         isIndex ?
-                            matches.map((match, index) => (
+                            indexMatches.map((match, index) => (
                                 index < 5 ? <Match key={index} match={match} /> : <Box key={index}></Box>
                             ))
                         :
@@ -128,10 +143,10 @@ const MatchList = ({isIndex}) => {
                                 <h3>{texts[obj.Lang].MATCHES_Ended}</h3>
                                 {
                                     endedMatches.length > 0 ?
-                                    endedMatches.slice(0, 10).map((match, index) => (
-                                            <Match key={index} match={match} />
+                                    endedMatches.slice(0, 8).map((match, index) => (
+                                        <Match key={index} match={match} />
                                         ))
-                                    :
+                                        :
                                         <>0 {texts[obj.Lang].MATCHES_Ended}</>
                                 }
                             </>
