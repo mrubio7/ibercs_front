@@ -10,7 +10,8 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import IconButton from '@mui/material/IconButton';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
-
+import Snackbar from '@mui/material/Snackbar';
+import CloseIcon from '@mui/icons-material/Close';
 
 const Profile = () => {
     const obj = useContext(Context);
@@ -20,7 +21,32 @@ const Profile = () => {
 	const [player, setPlayer] = useState(null);
     const [guid, setGuid] = useState("");
     const [invitations, setInvitations] = useState([]);
+
+    const [snackBarOpen, setSnackBarOpen] = useState(false);
+    const [snackBarMessageInfo, setSnackBarMessageInfo] = useState(undefined);
+
     document.title = texts[obj.Lang].TITLE_PROFILE;
+
+    const handleExited = () => {
+        setSnackBarMessageInfo(undefined);
+      };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setSnackBarOpen(false);
+    };
+
+    const handleSave = async () => {
+        const register = await Api.User.update(email, image, username);
+        if (register.data.success) {
+           setSnackBarMessageInfo({message: "✔️", severity: "success"});
+        } else {
+            setSnackBarMessageInfo({message: "❌", severity: "error"});
+        }
+        setSnackBarOpen(true);
+    }
 
     useEffect(() => {
         const getImage = async () => {
@@ -40,14 +66,20 @@ const Profile = () => {
 
         getUser();
         getImage();
-    }, []);
-
-    useEffect(() => {
-
-    }, [image, username, email]);
+    }, [auth?.currentUser]);
 
     return (
         <Box sx={{display:'flex', flexDirection: 'column'}}>
+
+            <Snackbar
+                key={snackBarMessageInfo ? snackBarMessageInfo.key : undefined}
+                open={snackBarOpen}
+                autoHideDuration={5000}
+                onClose={handleClose}
+                TransitionProps={{ onExited: handleExited }}
+                message={snackBarMessageInfo ? snackBarMessageInfo.message : undefined}
+            />
+
             <Box sx={{display:'flex', justifyContent: 'space-between'}}>
                 <Box>
                     <h3>{texts[obj.Lang].NAVBAR_USERMENU_Profile}</h3>
@@ -62,7 +94,7 @@ const Profile = () => {
                     <TextField sx={{marginBottom: 2}} size="small" fullWidth label="Email" disabled variant="outlined" value={email} />
                     <TextField fullWidth size="small" label="Nickname" variant="outlined" value={username} disabled onChange={(e) => setUsername(e.target.value)} />
                     <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
-                        <Button sx={{marginTop: 2, marginLeft: 2}} variant="contained">{texts[obj.Lang].SAVE}</Button>
+                        <Button onClick={handleSave} sx={{marginTop: 2, marginLeft: 2}} variant="contained">{texts[obj.Lang].SAVE}</Button>
                     </Box>
                 </Box>
             </Box>

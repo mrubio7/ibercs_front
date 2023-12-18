@@ -66,7 +66,7 @@ const ImageUploader = ({setImageBytes, src}) => {
         <div style={{
           width: '100%',
           height: '100%',
-          backgroundImage: `url(${src ? src : image})`,
+          backgroundImage: `url(${image ? image : src})`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'

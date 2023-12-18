@@ -20,6 +20,7 @@ export const api_endpoints = {
     user: {
         getImageByEmail: `${url_base}/user/get-image-by-email`,
         getUserByEmail: `${url_base}/user/get-user-by-email`,
+        update: `${url_base}/user/update`,
     },
     faceit: {
         login: `${url_base}/faceit/login`,
