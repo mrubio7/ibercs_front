@@ -21,7 +21,7 @@ const Api = {
             return basic_get(api_endpoints.thread.getLatest);
         },
         get: (id) => {
-            return get_with_auth(api_endpoints.thread.get+"?thread_id="+id);
+            return basic_get(api_endpoints.thread.get+"?thread_id="+id);
         },
     },
     Post: {

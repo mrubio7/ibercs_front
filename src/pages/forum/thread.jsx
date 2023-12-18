@@ -5,6 +5,7 @@ import Context from '../../context';
 import { Box, Button } from '@mui/material';
 import Post from '../../components/post';
 import NewPostForm from '../../components/post/new';
+import { auth } from "../../utils/firebase";
 
 const ThreadPage = () => {
     const obj = useContext(Context);
@@ -61,7 +62,15 @@ const ThreadPage = () => {
                         )
                     })
                 }
-                <NewPostForm threadId={threadId} />
+                {
+                    auth.currentUser != null ? (
+                        <NewPostForm threadId={threadId} />
+                    ) : (
+                        <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                            <Button variant='outlined' onClick={() => redirect('/login')} sx={{height: 40, alignSelf: 'center'}}>Iniciar sesión para comentar</Button>
+                        </Box>
+                    )
+                }
             </Box>
         )
     }

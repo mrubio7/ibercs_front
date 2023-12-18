@@ -5,18 +5,11 @@ import ThreadPage from "./thread";
 import { useContext, useEffect } from "react";
 import Context from "../../context";
 import { texts } from "../../utils/translate";
-import { auth } from "../../utils/firebase";
 
 const Forum = () => {
     const obj = useContext(Context);
     const navigate = useNavigate();
     document.title = texts[obj.Lang].TITLE_FORUM;
-
-    useEffect(() => {
-        if (!auth.currentUser) {
-            navigate('/login');
-        }
-    }, [auth.currentUser]);
 
     return (
         <div>
