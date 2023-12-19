@@ -20,6 +20,7 @@ const NewPostForm = ({title, threadId}) => {
     const handleSavePost = async () => {
         const post = await Api.Post.new(obj.Lang, quill, obj.User.ID, threadId);
         navigate(`/forum/${post.data.result.Thread_id}`);
+        window.location.reload();
     }
 
     return (
