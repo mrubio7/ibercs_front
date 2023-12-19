@@ -5,6 +5,7 @@ import Context from "../../context";
 import Match from "../../components/match";
 import MatchList from "../../components/match-list";
 import ThreadList_Latest from "../../components/thread-list/threadList_Latest";
+import TvList from "../../components/tv/tvList";
 
 const styles = {
     divider: {
@@ -20,9 +21,9 @@ const styles = {
         marginTop: "0px 5px"
     },
     addons: {
-
         fontSize: "1rem",
         display: "flex",
+        flexDirection: "column",
         width: "25%",
         margin: "0px 5px"
     }
@@ -39,9 +40,10 @@ const Index = () => {
                     <h3>{texts[obj.Lang].FORUM_Title}</h3>
                     <ThreadList_Latest />
                 </section> */}
-                {/* <section style={styles.addons}>
+                <section style={styles.addons}>
                     <h3>{texts[obj.Lang].ADDONS_Title}</h3>
-                </section> */}
+                    <TvList />
+                </section>
             </Box>
         </Box>
     );

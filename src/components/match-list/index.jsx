@@ -116,7 +116,7 @@ const MatchList = ({isIndex}) => {
                     :
                         isIndex ?
                             indexMatches.map((match, index) => (
-                                index < 5 ? <Match key={index} match={match} /> : <Box key={index}></Box>
+                                index < 4 ? <Match key={index} match={match} /> : <Box key={index}></Box>
                             ))
                         :
                             <>
