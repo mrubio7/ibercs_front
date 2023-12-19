@@ -8,6 +8,7 @@ import { useFirebaseLogout } from '../../hooks/useFirebaseLogout';
 import { auth } from '../../utils/firebase';
 import { onAuthStateChanged } from "firebase/auth";
 import UserMenu from '../userMenu';
+import { version } from '../../utils/const';
 
 const styles = {
   link:{
@@ -73,7 +74,7 @@ const Layout = ({ children }) => {
             <IconButton sx={{marginLeft: 1}}><img src='/images/x-logo-white.png' width={20} /></IconButton>
           </a>
           <Box sx={{fontSize: '0.6em', textAlign:'right', marginRight: 1}}>
-            v1.1.0
+            {version}
           </Box>
         </Box>
       </Box>

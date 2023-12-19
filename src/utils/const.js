@@ -65,3 +65,5 @@ export const lightTheme = createTheme({
       },
     }
   });
+
+export const version = 'v1.2';
