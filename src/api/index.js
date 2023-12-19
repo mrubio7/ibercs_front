@@ -36,8 +36,8 @@ const Api = {
         getUserByEmail: (username) => {
             return get_with_auth(api_endpoints.user.getUserByEmail+"?email="+username);
         },
-        update: (user_email, image, username) => {
-            return post_with_auth(api_endpoints.user.update, { "user_email":user_email, "image": image.toString(), "username":username });
+        update: (user_email, image, username, tv) => {
+            return post_with_auth(api_endpoints.user.update, { "user_email":user_email, "image": image.toString(), "username":username, "tv": tv });
         }
     },
     Players: {

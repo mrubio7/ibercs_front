@@ -18,6 +18,7 @@ const Profile = () => {
     const [image, setImage] = useState(null);
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
+    const [tv, setTv] = useState("");
 	const [player, setPlayer] = useState(null);
     const [guid, setGuid] = useState("");
     const [invitations, setInvitations] = useState([]);
@@ -39,7 +40,7 @@ const Profile = () => {
     };
 
     const handleSave = async () => {
-        const register = await Api.User.update(email, image, username);
+        const register = await Api.User.update(email, image, username, tv);
         if (register.data.success) {
            setSnackBarMessageInfo({message: "✔️", severity: "success"});
         } else {
@@ -62,7 +63,9 @@ const Profile = () => {
 			setPlayer(data.data.success.player);
             setGuid(data.data.success.guid);
             setInvitations(data.data.success.invitations);
+            setTv(data.data.success.player.tv);
         }
+
 
         getUser();
         getImage();
@@ -92,7 +95,8 @@ const Profile = () => {
                 <ImageUploader setImageBytes={setImage} src={`data:image/jpeg;base64,${image}`}/>
                 <Box  sx={{width: '100%', marginLeft: 2}}>
                     <TextField sx={{marginBottom: 2}} size="small" fullWidth label="Email" disabled variant="outlined" value={email} />
-                    <TextField fullWidth size="small" label="Nickname" variant="outlined" value={username} disabled onChange={(e) => setUsername(e.target.value)} />
+                    <TextField sx={{marginBottom: 2}} fullWidth size="small" label="Nickname" variant="outlined" value={username} disabled onChange={(e) => setUsername(e.target.value)} />
+                    <TextField size="small" fullWidth label="Twitch" variant="outlined" value={tv} onChange={(e) => setTv(e.target.value)} />
                     <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
                         <Button onClick={handleSave} sx={{marginTop: 2, marginLeft: 2}} variant="contained">{texts[obj.Lang].SAVE}</Button>
                     </Box>
