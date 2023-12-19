@@ -42,9 +42,9 @@ const Profile = () => {
     const handleSave = async () => {
         const register = await Api.User.update(email, image, username, tv);
         if (register.data.success) {
-           setSnackBarMessageInfo({message: "✔️", severity: "success"});
+           setSnackBarMessageInfo({message: "✔️ :)", severity: "success"});
         } else {
-            setSnackBarMessageInfo({message: "❌", severity: "error"});
+            setSnackBarMessageInfo({message: "❌ :(", severity: "error"});
         }
         setSnackBarOpen(true);
     }
