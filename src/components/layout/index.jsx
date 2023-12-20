@@ -43,9 +43,9 @@ const Layout = ({ children }) => {
               <Link to="/matches" style={styles.link}>
                 <Button variant="text" color='primary'>{texts[obj.Lang].NAVBAR_Matches}</Button>
               </Link>
-              {/* <Link to="/forum" style={styles.link}>
+              <Link to="/forum" style={styles.link}>
                 <Button variant="text" color='primary'>{texts[obj.Lang].NAVBAR_Forum}</Button>
-              </Link> */}
+              </Link>
               <Link to="/ladder/teams" style={styles.link}>
                 <Button variant="text" color='primary'>{texts[obj.Lang].NAVBAR_Ladder}</Button>
               </Link>
