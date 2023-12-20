@@ -12,6 +12,9 @@ const Api = {
         recoverPassword: (email) => {
             return basic_post(api_endpoints.account.recoverPassword, {"email":email });
         },
+        isInvitationValid: (invitation) => {
+            return basic_post(api_endpoints.account.isInvitationValid, {"invitation":invitation });
+        }
     },
     Thread: {
         new: (lang, title, user,desc) => {

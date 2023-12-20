@@ -1,5 +1,5 @@
-import { TextField, Avatar, Paper, Box, Button } from "@mui/material";
-import React, { useContext, useState } from "react";
+import { TextField, Avatar, Paper, Box, Button, Snackbar } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
 import { useFirebaseLogin } from "../../hooks/useFirebaseLogin";
 import { useFirebaseLogout } from "../../hooks/useFirebaseLogout";
 import Context from "../../context";
@@ -34,19 +34,48 @@ const Login = () => {
     const logout = useFirebaseLogout();
     const navigate = useNavigate();
 
-    document.title = texts[obj.Lang].TITLE_LOGIN;
+    const [snackBarOpen, setSnackBarOpen] = useState(false);
+    const [snackBarMessageInfo, setSnackBarMessageInfo] = useState(undefined);
 
+    document.title = texts[obj.Lang].TITLE_LOGIN;
+    
     const handleLogin = async () => {
         const auth = await login(email, password);
-        navigate("/");
+        console.log(auth);
+    
+        if (auth != null) {
+            setSnackBarMessageInfo({message: texts[obj.Lang].LOGGED, severity: "success"});
+            setSnackBarOpen(true);
+            navigate("/");
+        } else {
+            setSnackBarMessageInfo({message: texts[obj.Lang].NOTLOGGED, severity: "error"});
+            setSnackBarOpen(true);
+        }
     }
 
-    const handleLogout = async () => {
-        const auth = await logout();
-    }
+    const handleExited = () => {
+        setSnackBarMessageInfo(undefined);
+      };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setSnackBarOpen(false);
+    };
 
     return (
         <div style={styles.boxContainer}>
+
+            <Snackbar
+                key={snackBarMessageInfo ? snackBarMessageInfo.key : undefined}
+                open={snackBarOpen}
+                autoHideDuration={5000}
+                onClose={handleClose}
+                TransitionProps={{ onExited: handleExited }}
+                message={snackBarMessageInfo ? snackBarMessageInfo.message : undefined}
+            />
+
             <Paper elevation={3} style={styles.box}>
                 <Avatar alt="logo" src="/images/ibercs.png" sx={{ width: 120, height: 120, marginTop: -2 }} />
                 <Box>

@@ -1,12 +1,13 @@
 import { createTheme } from '@mui/material/styles';
 
-//const url_base = 'http://localhost:8080/api/v1';
-const url_base = 'https://api.ibercs.com/api/v1'; 
+const url_base = 'http://localhost:8080/api/v1';
+//const url_base = 'https://api.ibercs.com/api/v1'; 
 export const api_endpoints = { 
     account: {
         new: `${url_base}/account/new`,
-        isFreeUsername: `${url_base}/account/IsFreeUsername`,
+        isFreeUsername: `${url_base}/account/is-free-username`,
         recoverPassword: `${url_base}/account/recover-password`,
+        isInvitationValid: `${url_base}/account/is-invitation-valid`,
     },
     thread: {
         new: `${url_base}/thread/new`,
@@ -66,4 +67,4 @@ export const lightTheme = createTheme({
     }
   });
 
-export const version = 'v1.4.2';
+export const version = 'v1.5';

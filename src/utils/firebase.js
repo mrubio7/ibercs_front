@@ -22,15 +22,17 @@ catch(e) {
 export const auth = getAuth(app);
 
 export const Firebase_Login = async (email, password) => {
-	setPersistence(auth, browserLocalPersistence)
-  .then(() => {
-    return signInWithEmailAndPassword(auth, email, password);
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+  try {
+      await setPersistence(auth, browserLocalPersistence);
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      return result;
+  } catch (error) {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(`Error code: ${errorCode}, message: ${errorMessage}`);
+      throw error; // Re-throw the error so it can be caught and handled by the calling function
+  }
 };
 
 export const Firebase_Logout = async () => {

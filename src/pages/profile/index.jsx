@@ -43,12 +43,12 @@ const Profile = () => {
         if (image == null) {
             setImage("");
         }
-        
+
         const register = await Api.User.update(email, image, username, tv);
         if (register.data.success) {
-           setSnackBarMessageInfo({message: "✔️ :)", severity: "success"});
+           setSnackBarMessageInfo({message: texts[obj.Lang].PROFILE_Saved, severity: "success"});
         } else {
-            setSnackBarMessageInfo({message: "❌ :(", severity: "error"});
+            setSnackBarMessageInfo({message: texts[obj.Lang].PROFILE_Error, severity: "error"});
         }
         setSnackBarOpen(true);
     }

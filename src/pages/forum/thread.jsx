@@ -82,7 +82,7 @@ const ThreadPage = () => {
                     </Box>
 
                     {
-                        user?.permission_level == 1 ? (
+                        user?.permission_level > 0 ? (
                             <Box sx={{display:'flex', justifyContent:'end', marginBottom: 3, marginTop: -2}}>
                                 <TextField label='Stream' size='small' variant='outlined' sx={{width: 200, marginRight: 2}} />
                                 <Button variant='contained'>+ TV</Button>

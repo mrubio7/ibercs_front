@@ -25,3 +25,7 @@ a {
   .faceit-elo[data-elo="3600"] {
     background: linear-gradient(to right, #FF0000, #FF1493); /* Rojo a rosa */
   }
+
+  .css-p51h6s-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100px #2a1d15 inset !important;
+  }

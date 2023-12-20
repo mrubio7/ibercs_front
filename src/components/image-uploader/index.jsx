@@ -6,7 +6,7 @@ const styles = {
     imagePreview: {
         width: '150px',
         height: '150px',
-        backgroundColor: '#f3f3f3',
+        backgroundColor: '#444',
         objectFit: 'cover',
         marginBottom: '20px',
         borderRadius: '5px',
@@ -16,7 +16,6 @@ const styles = {
     },
     imagePreviewHover: {
         border: '1px solid #d32f2f !important',
-        backgroundColor: '#e9e9e9 !important',
         transition: '0.1s ease',
     }
 };
