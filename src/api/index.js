@@ -28,6 +28,9 @@ const Api = {
         new: (lang, desc, user, thread_id) => {
             return post_with_auth(api_endpoints.post.new, { "lang":lang, "desc":desc, "user":String(user), "thread_id":String(thread_id) });
         },
+        delete: (post_id, user_email) => {
+            return post_with_auth(api_endpoints.post.delete, { "post_id":String(post_id), "user_email":user_email });
+        },
     },
     User: {
         getImageByEmail: (email) => {

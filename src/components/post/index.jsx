@@ -1,12 +1,19 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import Context from "../../context"
 import { Avatar, Box, Card, CardActions, CardHeader, IconButton, Typography } from "@mui/material";
 import { format } from 'date-fns';
 import PlusOneIcon from '@mui/icons-material/PlusOne';
-import WarningIcon from '@mui/icons-material/Warning';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Api from "../../api";
+import { auth } from "../../utils/firebase";
 
 const Post = ({ post }) => {
     const obj = useContext(Context);
+
+    const handleDelete = async () => {
+        const res = await Api.Post.delete(post.ID, auth.currentUser?.email)
+        window.location.reload()
+    }
 
     return (
         <Card sx={post.Post_Number == 1 ? {backgroundImage: 'none !important', boxShadow: 'none', borderRadius: 2, margin: '20px 0px 50px 0px' } : { borderRadius: 2, margin: '30px 0px'}}>
@@ -30,14 +37,19 @@ const Post = ({ post }) => {
                     <div dangerouslySetInnerHTML={{ __html: post?.Desc_PT }} />
                 )}
             </Box>
-            {/* <CardActions sx={{display: 'flex', justifyContent: 'space-between'}}>
-                <IconButton >
+            <CardActions sx={{display: 'flex', justifyContent: 'end'}}>
+                {/* <IconButton >
                     <PlusOneIcon />
-                </IconButton>
-                <IconButton >
-                    <WarningIcon />
-                </IconButton>
-            </CardActions> */}
+                </IconButton> */}
+                {
+                    post?.User?.email == auth.currentUser?.email || post?.User?.permission_level > 1 ? (
+                        <IconButton onClick={() => handleDelete()}>
+                            <DeleteIcon />
+                        </IconButton>
+                    ) : null
+                
+                }
+            </CardActions>
         </Card>
     )
 }

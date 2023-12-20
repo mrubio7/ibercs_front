@@ -15,7 +15,7 @@ export const api_endpoints = {
     },
     post: {
         new: `${url_base}/post/new`,
-        
+        delete: `${url_base}/post/delete`,
     },
     user: {
         getImageByEmail: `${url_base}/user/get-image-by-email`,
@@ -66,4 +66,4 @@ export const lightTheme = createTheme({
     }
   });
 
-export const version = 'v1.3';
+export const version = 'v1.4.0';

@@ -12,11 +12,7 @@ const styles = {
         flexDirection: 'column',
         justifyContent: 'space-between',
         margin: '10px 0px',
-        // add hover effect
-        '&:hover': {
-            cursor: 'pointer',
-            backgroundColor: '#ffe0e0 !important',
-        },
+        border: '1px solid #222',
     },
     threadContent: {
         display: 'flex',

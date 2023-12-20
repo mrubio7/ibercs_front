@@ -21,7 +21,7 @@ const styles = {
     },
     tvHover: {
         cursor: 'pointer',
-        backgroundColor: 'rgba(229, 135, 22, 0.08);',
+        backgroundColor: 'rgba(229, 135, 22, 0.08)',
         transition: 'background-color 0.2s',
     }
 }
