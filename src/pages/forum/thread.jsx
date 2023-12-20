@@ -28,7 +28,7 @@ const ThreadPage = () => {
             const response = await Api.Matches.getMatchByThreadId(threadId);
             setMatch(response.data.result);
         }
-    
+        
         if (thread?.user == "MATCH") {
             getMatch();
         }
@@ -65,12 +65,14 @@ const ThreadPage = () => {
                             {
                                 match.tv != "" ? (
                                     <iframe
-                                        src={`https://player.twitch.tv/?channel=${match.tv}&parent=https://www.ibercs.com&muted=true`}
-                                        height="160"
-                                        width="320"
+                                        src={`https://player.twitch.tv/?channel=${match?.tv}&parent=www.ibercs.com&parent=localhost&muted=true`}
+                                        height="260"
+                                        width="463"
                                         allowFullScreen
                                         style={{borderRadius: 7, marginTop: 10}}
-                                    />) : <></>
+                                    />
+                                    // <div id="twitch-embed"></div>
+                                    ) : <></>
                             }
                         </Box>
                         <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>

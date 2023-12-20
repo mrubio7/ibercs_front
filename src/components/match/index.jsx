@@ -11,14 +11,13 @@ const styles = {
         flexDirection: 'row',
         justifyContent: 'space-between',
         transition: '0.1s ease',
-        border: '1px solid #CCC',
+        border: '1px solid rgba(229, 135, 22, 0.08)',
         margin: '5px 0px',
     },
     matchHover: {
-        scale: '1.005',
         transition: '0.1s ease',
         cursor: 'pointer',
-        border: '1px solid orange !important'
+        border: '1px solid rgba(229, 135, 22, 0.28) !important'
     },
     textNames: {
         display:'flex', 
@@ -119,35 +118,3 @@ const Match = ({match}) => {
 }
 
 export default Match;
-
-
-{/* <Box sx={{}}>
-        <Box sx={{}}>
-            <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
-                <CardMedia
-                    sx={{ height: 40, width: '100%', zIndex: '1' }}
-                    image={match.avatar_team_a}
-                />
-                <CardMedia
-                    sx={{ height: 40, width: '100%', zIndex: '1' }}
-                    image={match.avatar_team_b}
-                />
-            </Box>
-            <CardMedia
-                sx={{ 
-                    height: '50px', 
-                    zIndex: '2', 
-                    position: 'relative', 
-                    top: '20%',
-                    scale: '0.5',
-                    left: '25%', 
-                    width: '50%',
-                }}
-                image={"https://upload.wikimedia.org/wikipedia/commons/7/70/Street_Fighter_VS_logo.png"}
-            />
-        </Box>
-        
-    </Box>
-    
-        </Box>
-} */}

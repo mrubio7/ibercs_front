@@ -98,3 +98,16 @@ export const put_with_auth = (url, params) => {
         });
     });
 }
+
+export const TWITCH_get_token = async () => {
+    const clientID = process.env.REACT_APP_TWITCH_CLIENT_ID;
+    const clientSecret = process.env.REACT_APP_TWITCH_CLIENT_SECRET;
+
+    try {
+        const response = await axios.post(`https://id.twitch.tv/oauth2/token?client_id=${clientID}&client_secret=${clientSecret}&grant_type=client_credentials`);
+        return response.data.access_token;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
