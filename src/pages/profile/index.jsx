@@ -40,6 +40,10 @@ const Profile = () => {
     };
 
     const handleSave = async () => {
+        if (image == null) {
+            setImage("");
+        }
+        
         const register = await Api.User.update(email, image, username, tv);
         if (register.data.success) {
            setSnackBarMessageInfo({message: "✔️ :)", severity: "success"});
