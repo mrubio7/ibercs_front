@@ -66,4 +66,4 @@ export const lightTheme = createTheme({
     }
   });
 
-export const version = 'v1.4.0';
+export const version = 'v1.4.1';
