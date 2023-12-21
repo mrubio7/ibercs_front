@@ -20,12 +20,13 @@ const styles = {
         height: '100%',
     },
     threadTitle: {
-        margin: '5px 0px 0px 15px',
-        width: '100%',
-        display: 'flex',
+        margin: '10px 0px -5px 15px',
+        width: '95%',
         alignItems: 'center',
+        display: '-webkit-box',
         WebkitLineClamp: '1',
         WebkitBoxOrient: 'vertical',
+        overflow: 'hidden',
     },
     threadDesc: {
         marginLeft: '15px',
@@ -65,7 +66,7 @@ const Thread = ({title_ES, title_PT, desc_ES, desc_PT, username, posts_nb, id, m
                         /> : 
                         null
                     }
-                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', width: '100%'}}>
                         <div style={styles.threadTitle}>
                             {
                                 obj.Lang === 'ES' ? <b>{title_ES}</b> : <b>{title_PT}</b>
@@ -73,7 +74,7 @@ const Thread = ({title_ES, title_PT, desc_ES, desc_PT, username, posts_nb, id, m
                         </div>
                         <div style={styles.threadDesc}>
                             {
-                                obj.Lang === 'ES' ? <span>{desc_ES}</span> : <span>{desc_PT}</span>
+                                obj.Lang === 'ES' ? <span dangerouslySetInnerHTML={{ __html: desc_ES }}></span> : <span dangerouslySetInnerHTML={{ __html: desc_PT }}></span>
                             }
                         </div>
                     </div>
