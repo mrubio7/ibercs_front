@@ -43,11 +43,11 @@ const Layout = ({ children }) => {
               <Link to="/matches" style={styles.link}>
                 <Button variant="text" color='primary'>{texts[obj.Lang].NAVBAR_Matches}</Button>
               </Link>
-              <Link to="/forum" style={styles.link}>
+              {/* <Link to="/forum" style={styles.link}>
                 <Button variant="text" color='primary'>{texts[obj.Lang].NAVBAR_Forum}</Button>
-              </Link>
-              <Link to="/ladder/teams" style={styles.link}>
-                <Button variant="text" color='primary'>{texts[obj.Lang].NAVBAR_Ladder}</Button>
+              </Link> */}
+              <Link to="/teams" style={styles.link}>
+                <Button variant="text" color='primary'>{texts[obj.Lang].LADDER_BUTTON_teams}</Button>
               </Link>
             </Box>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: 2 }}></Typography>

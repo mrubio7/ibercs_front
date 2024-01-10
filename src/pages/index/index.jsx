@@ -36,10 +36,10 @@ const Index = () => {
         <Box>
             <MatchList isIndex={true} />
             <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
-                <section style={styles.forum}>
+                {/* <section style={styles.forum}>
                     <h3>{texts[obj.Lang].FORUM_Title}</h3>
                     <ThreadList_Latest />
-                </section>
+                </section> */}
                 <section style={styles.addons}>
                     <h3>{texts[obj.Lang].ADDONS_Title}</h3>
                     <TvList />

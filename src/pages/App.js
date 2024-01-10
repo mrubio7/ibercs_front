@@ -12,6 +12,7 @@ import Profile from "./profile";
 import Api from "../api";
 import { texts } from "../utils/translate";
 import Matches from "./matches";
+import LadderTeams from "../components/ladder/ladderTeams";
 
 
 const styles = {
@@ -63,7 +64,7 @@ function App() {
                 <Route path="/profile" element={ <Profile/> } />
                 <Route path="/forum/*" element={ <Forum/> } />
                 <Route path="/matches" element={ <Matches/> } />
-                <Route path="/ladder/*" element={ <Ladder/> } />
+                <Route path="/teams" element={ <LadderTeams/> } />
             </Routes>
           </Layout>
         </Router>
