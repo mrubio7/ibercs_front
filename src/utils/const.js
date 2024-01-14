@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 
-const url_base = 'http://localhost:8080/api/v1';
-//const url_base = 'https://api.ibercs.com/api/v1'; 
+//const url_base = 'http://localhost:8080/api/v1';
+const url_base = 'https://api.ibercs.com/api/v1'; 
 export const api_endpoints = { 
     account: {
         new: `${url_base}/account/new`,
@@ -67,4 +67,4 @@ export const lightTheme = createTheme({
     }
   });
 
-export const version = 'v1.6';
+export const version = 'v1.0';

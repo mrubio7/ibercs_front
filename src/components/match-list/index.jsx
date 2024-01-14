@@ -17,10 +17,11 @@ const MatchList = ({isIndex}) => {
     const [indexMatches, setIndexMatches] = useState([]);
     const [loading, setLoading] = useState(true);
     
-    
     const getUpcomingMatches = () => {
         const now = new Date();
-        return matches.filter(match => new Date(match.date) > now);
+        return matches
+            .filter(match => new Date(match.date) > now)
+            .sort((a, b) => new Date(a.date) - new Date(b.date));
     }
 
     const getStartedMatches = () => {
