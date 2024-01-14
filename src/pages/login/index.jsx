@@ -91,6 +91,9 @@ const Login = () => {
                             {texts[obj.Lang].REGISTER_Button}
                         </Button>
                     </Link>
+                    <Link to="/forgot-password" style={{ textDecoration: 'none', textAlign: 'center', display: 'block', marginTop: '10px' }}>
+                        {texts[obj.Lang].LOGIN_ForgotPassword}
+                    </Link>
                 </Box>
             </Paper >
         </div>

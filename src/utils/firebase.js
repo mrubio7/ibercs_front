@@ -43,3 +43,13 @@ export const Firebase_Logout = async () => {
     console.log(error);
   }
 }
+
+export const Firebase_ResetPassword = async (email) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    console.log("Password reset email sent");
+  } catch (error) {
+    console.error("Error sending password reset email: ", error);
+    throw error; // Re-throw the error so it can be caught and handled by the calling function
+  }
+};
